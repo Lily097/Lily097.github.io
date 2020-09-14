@@ -1,11 +1,11 @@
 body {
     margin: 0;
     padding: 0;
-    background:rgb(3, 73, 65);
+    background: rgb(3, 73, 65);
     color: #FFFFFF;
     font-family: 'Open Sans Condensed', sans-serif;
     font-style: normal;
-    
+
 }
 
 *,
@@ -32,11 +32,12 @@ h6 {
 .container {
     width: 100%;
     max-width: 1100px;
-    padding: 0 15px;    
+    padding: 0 15px;
     margin: 0 auto;
 
 }
-.intro{
+
+.intro {
     width: 100%;
     min-height: 100vh;
     max-width: 880px;
@@ -44,12 +45,12 @@ h6 {
 
 }
 
-.intro_inner{
+.intro__inner {
     margin: 0 auto;
     text-align: center;
     padding: 200px 0;
 
-    
+
 }
 
 .section {
@@ -70,12 +71,13 @@ h6 {
     left: 0;
     right: 0;
 
-    
+
 }
+
 .nav {
-    display: flex;                      
-    flex-direction: row;                 
-    justify-content: flex-end;      
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .nav__link {
@@ -87,11 +89,11 @@ h6 {
 
 .nav__link:hover {
     color: #D1A954;
-    transition: 0.47s all;                 
+    transition: 0.47s all;
 }
 
 .nav__link:after {
-    content: "";                          
+    content: "";
     display: block;
     width: 100%;
     height: 2px;
@@ -109,77 +111,124 @@ h6 {
 
 
 
-.about_me-content{
+.about-me__content {
     padding: 30px;
- display: grid;
- grid-template-columns: repeat(2, 1fr);
- grid-gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
 
 }
 
-.content-image{
+.content-image {
     grid-column: 1/2;
     grid-row: 1;
 
 }
-.content-text{
+
+.content-text {
     grid-column: 2/2;
-    grid-row: 1; 
+    grid-row: 1;
 }
 
-.img{
-   display:block;
-   max-width: 70%;
-   height: auto;
+.img {
+    display: block;
+    max-width: 70%;
+    height: auto;
 }
 
-.my_skills-images{
+.my-skills__images {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
-   
-    
 }
 
-.html_img{
+.my-skills__images img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+
+.html-img {
     /*grid-column: 1/3;*/
     grid-row: 1;
     text-align: center;
 }
-.css_img{
+
+.css-img {
     grid-column: 2/3;
     grid-row: 2;
     text-align: center;
 }
-.js_img{
+
+.js-img {
     grid-column: 3/3;
     grid-row: 3;
     text-align: center;
 }
 
-.my_job-cards{
+.my-job__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
 }
 
-.my_job-card{
-background-color: green;
+.my-job__card {
+    background-color: green;
 
-height: 300px;
-width: 200px;
-margin-top: 20px ;
+    height: 400px;
+    width: 300px;
+    margin-top: 20px;
+  /*  outline: 1px solid white;
+    outline-offset: -28px;*/
 }
 
-.edit{
-    text-decoration: none;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
-    padding: 3px ;
-   
+.my-job__card__text {
+    padding: 20px;
 }
 
-.footer{
+.my-job-edit .my-job__card:hover{
+    background-color: grey ;
+}
+
+.my-job-edit .my-job__card:hover .my-job__card__buttons{
+    display: block;
+}
+
+.my-job__card__buttons {
+    display:none;
+    float: right;
+}
+
+.button img {
+    height: 30px;
+    width: 30px;
+}
+
+.button {
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+	background-position: left top;
+}
+
+.icon-edit {
+    background-image: url('/images/edit.svg');
+}
+
+.icon-add {
+    background-image: url('/images/add.svg');
+}
+
+.icon-save {
+    background-image: url('/images/save.svg');
+}
+
+.icon-delete {
+    background-image: url('/images/delete.svg');
+}
+
+.footer {
     border-top: 1px solid #565656;
     padding: 30px 0;
     text-align: center;

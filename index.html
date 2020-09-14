@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <title>Document</title>
+    <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+    <script defer="true" type="text/javascript" src="main.js"></script>
 </head>
 <body>
-    <header class="header">
+<header class="header">
         <div class="header__container">
             <nav class="nav">
-                <a class="nav__link" href="#!">Главная</a>
-                <a class="nav__link" href="#!">Обо мне</a>
-                <a class="nav__link" href="#!">Мои навыки</a>
-                <a class="nav__link" href="#!">Моя работа</a>
-                <a class="nav__link" href="#!">Контакты</a> 
+                <a class="nav__link" href="#top">Главная</a>
+                <a class="nav__link" href="#about-me">Обо мне</a>
+                <a class="nav__link" href="#my-skills">Мои навыки</a>
+                <a class="nav__link" href="#my-job">Моя работа</a>
+                <a class="nav__link" href="#contacts">Контакты</a> 
             </nav>
         </div>
     </header>
@@ -22,17 +24,17 @@
     <div class="page">
         <div class="intro">
             <div class="container">
-                <div class="intro_inner">
+                <div class="intro__inner">
                     <h1>Junior Frontend-developer</h1>   
                 </div>
             </div>              
         </div>
         
 
-        <section class="section about_me">
+        <section id="about-me" class="section about-me">
             <div class="container">
                 <h2 class="content-title">Обо мне</h2>
-                <div class="about_me-content">
+                <div class="about-me__content">
                     <div class="content-image"><img class="img" src="/images/Photo.jpg" alt="my_photo"></div>
                     <div class="content-text">
                         <p>Привет, меня зовут Лилия Мазгарова. Я родилась и выросла в Уфе. Закончила Уфимский государственный авиационный технический университет в степени бакалавра. Направление "Программная инженерия". В данный момент учусь на первом курсе магистратуры на направлении "Информационные системы и технологии" </p>
@@ -41,46 +43,79 @@
         </div> 
         </section>
 
-        <section class="section my_skills">
+        <section id="my-skills" class="section my-skills">
             <div class="container">
                 <h2>Мои навыки</h2>
-                <div class="my_skills-images">
-                <div class="html_img"><img src="/images/html.png" alt="html_img" srcset=""></div>
-                <div class="css_img"><img src="/images/css.png" alt="css_img" srcset=""></div>
-                <div class="js_img"><img src="/images/js.png" alt="javascript_img" srcset=""></div>
+                <div class="my-skills__images">
+                <div class="html-img"><img src="/images/html.png" alt="html-img" srcset=""></div>
+                <div class="css-img"><img src="/images/css.png" alt="css-img" srcset=""></div>
+                <div class="js-img"><img src="/images/js.png" alt="javascript-img" srcset=""></div>
                 </div>
             </div>
         </section>
 
-        <section class="section my_job">
+        <section id="my-job" class="section my-job">
             <div class="container">
                 <h2>Моя работа</h2>
-                <div class="my_job-edit"><a class="edit" href="">Редактировать</a><br></div>
-
-                <div class="my_job-cards">
-                    <div class="my_job-card">Здесь будет отображение: Должность, Обязанности, время работы</div>
-                    <div class="my_job-card">Здесь будет отображение: Должность, Обязанности, время работы</div>
-                    <div class="my_job-card">Здесь будет отображение: Должность, Обязанности, время работы</div>
-                    <div class="my_job-card">Здесь будет отображение: Должность, Обязанности, время работы</div>
-                    <div class="my_job-card">Здесь будет отображение: Должность, Обязанности, время работы</div>
-                    <div class="my_job-card">Здесь будет отображение: Должность, Обязанности, время работы</div>
-   
-                    
+                <div>
+                    <button id="btn-start-editing" class="button icon-edit"></button>                                    
+                    <button id="btn-add-new-card" style="display: none;" class="button icon-add"></button>
+                    <button id="btn-finish-editing" style="display: none;" class="button icon-save"></button>
+                </div>
+                <div id="cards" class="my-job__cards">
+                    <div id="card" class="my-job__card">
+                        <div class="my-job__card__buttons">      
+                            <button class="button icon-edit"></button>                                    
+                            <button class="button icon-delete"></button>                                
+                        </div>
+                        <div class="my-job__card__text">
+                            <div>
+                                сентябрь 2019 - текущее время
+                            </div>
+                            <h3>Должность</h3>
+                            <div>Обязанности</div>
+                        </div>
+                    </div>                   
+                    <div data-card-id="-1" class="my-job__card">
+                        <div class="my-job__card__buttons">
+                            <button class="button icon-save"></button>
+                            <button class="button icon-delete"></button>                
+                        </div>
+                        <div class="my-job__card__text">
+                            <div>
+                                <input type="text" name="occupation" placeholder="Должность"/>
+                            </div>
+                            <div>
+                                <textarea name="responsibilities" placeholder="Обязанности"></textarea>
+                            </div>
+                            <div>
+                                <input name="startDate" type="text" placeholder="Начало работы" />
+                            </div>
+                            <div>
+                                <input name="endDate" type="text" placeholder="Конец работы" />
+                            </div>
+                        </div>
+                    </div>                   
                 </div>
             </div>
         </section>
 
-        <section class="section contacts">
+        <section id="contacts" class="section contacts">
             <div class="container">
                 <h2>Контакты</h2>
-                <p>+79196199874</p>
-                <p>98lillitlu13@gmail.com</p>
-                <p>https://vk.com/lillit_lu</p>
+                <div class="contacts">
+                <img src="/images/whatsapp.svg" alt="whatsapp" srcset=""></p>+79196199874</p>
+                <img src="/images/gmail.svg" alt="gmail.com" srcset=""><p>98lillitlu13@gmail.com</p>
+                <img src="/images/vk.svg" alt="vk.com" srcset=""><p>https://vk.com/lillit_lu</p>
+                </div>
             </div>
         </section>
     <footer class="footer">
         <p>Copyright ©2020</p>
     </footer>    
     </div>
+
+
+
 </body>
 </html>
