@@ -1,24 +1,24 @@
 [
     {
         "id": 0,
-        "occupation": "Должность какая-то 1",
-        "responsibilities": "Какие-то там обязанности",
+        "occupation": "Должность 1",
+        "responsibilities": "Обязанности",
         "startDate": "октябрь 2019",
         "endDate": "апрель 2020"
     },
     
     {
         "id": 1,
-        "occupation": "Должность какая-то 2",
-        "responsibilities": "Какие-то там обязанности",
+        "occupation": "Должность 2",
+        "responsibilities": "Обязанности",
         "startDate": "апрель 2020",
         "endDate": "июнь 2020"
     },
 
     {
         "id": 2,
-        "occupation": "Должность какая-то 3",
-        "responsibilities": "Какие-то там обязанности",
+        "occupation": "Должность 3",
+        "responsibilities": "Обязанности",
         "startDate": "июнь 2020",
         "endDate": "август 2020"
     }

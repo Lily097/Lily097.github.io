@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Document</title>
+    <title>Портфолио</title>
     <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
     <script defer="true" type="text/javascript" src="main.js"></script>
 </head>
 <body>
-<header class="header">
+    <header class="header">
         <div class="header__container">
             <nav class="nav">
                 <a class="nav__link" href="#top">Главная</a>
                 <a class="nav__link" href="#about-me">Обо мне</a>
                 <a class="nav__link" href="#my-skills">Мои навыки</a>
                 <a class="nav__link" href="#my-job">Моя работа</a>
-                <a class="nav__link" href="#contacts">Контакты</a> 
+                <a class="nav__link" href="#my_contacts">Контакты</a> 
             </nav>
         </div>
     </header>
 
     <div class="page">
         <div class="intro">
-            <div class="container">
+            
                 <div class="intro__inner">
                     <h1>Junior Frontend-developer</h1>   
                 </div>
-            </div>              
+                       
         </div>
         
 
@@ -37,8 +37,11 @@
                 <div class="about-me__content">
                     <div class="content-image"><img class="img" src="/images/Photo.jpg" alt="my_photo"></div>
                     <div class="content-text">
-                        <p>Привет, меня зовут Лилия Мазгарова. Я родилась и выросла в Уфе. Закончила Уфимский государственный авиационный технический университет в степени бакалавра. Направление "Программная инженерия". В данный момент учусь на первом курсе магистратуры на направлении "Информационные системы и технологии" </p>
-                </div>
+                        <p>Привет, меня зовут Лилия Мазгарова. Я родилась и выросла в Уфе. Закончила Уфимский государственный авиационный технический университет в степени бакалавра.
+                        Направление "Программная инженерия". В данный момент учусь на первом курсе магистратуры на направлении "Информационные системы и технологии" </p>
+                        <p>Мое хобби - чтение книг и танцы</p>
+                        <p>Своими положительными профессиональными качествами считаю ответственность и добросовестность. Свое будущее вижу в профессии Frontend-разработчика. Стремлюсь осваивать новые навыки и направления</p>    
+                    </div>
             </div>    
         </div> 
         </section>
@@ -50,6 +53,10 @@
                 <div class="html-img"><img src="/images/html.png" alt="html-img" srcset=""></div>
                 <div class="css-img"><img src="/images/css.png" alt="css-img" srcset=""></div>
                 <div class="js-img"><img src="/images/js.png" alt="javascript-img" srcset=""></div>
+                <div class="js-img"><img src="/images/jquery.png" alt="javascript-img" srcset=""></div>
+                <div class="js-img"><img src="/images/git.png" alt="javascript-img" srcset=""></div>
+                <div class="js-img"><img src="/images/figma.png" alt="javascript-img" srcset=""></div>
+              
                 </div>
             </div>
         </section>
@@ -62,51 +69,18 @@
                     <button id="btn-add-new-card" style="display: none;" class="button icon-add"></button>
                     <button id="btn-finish-editing" style="display: none;" class="button icon-save"></button>
                 </div>
-                <div id="cards" class="my-job__cards">
-                    <div id="card" class="my-job__card">
-                        <div class="my-job__card__buttons">      
-                            <button class="button icon-edit"></button>                                    
-                            <button class="button icon-delete"></button>                                
-                        </div>
-                        <div class="my-job__card__text">
-                            <div>
-                                сентябрь 2019 - текущее время
-                            </div>
-                            <h3>Должность</h3>
-                            <div>Обязанности</div>
-                        </div>
-                    </div>                   
-                    <div data-card-id="-1" class="my-job__card">
-                        <div class="my-job__card__buttons">
-                            <button class="button icon-save"></button>
-                            <button class="button icon-delete"></button>                
-                        </div>
-                        <div class="my-job__card__text">
-                            <div>
-                                <input type="text" name="occupation" placeholder="Должность"/>
-                            </div>
-                            <div>
-                                <textarea name="responsibilities" placeholder="Обязанности"></textarea>
-                            </div>
-                            <div>
-                                <input name="startDate" type="text" placeholder="Начало работы" />
-                            </div>
-                            <div>
-                                <input name="endDate" type="text" placeholder="Конец работы" />
-                            </div>
-                        </div>
-                    </div>                   
-                </div>
+                <div id="cards" class="my-job__cards"></div>
             </div>
         </section>
 
-        <section id="contacts" class="section contacts">
+        <section id="my_contacts" class="section my_contacts">
             <div class="container">
                 <h2>Контакты</h2>
                 <div class="contacts">
-                <img src="/images/whatsapp.svg" alt="whatsapp" srcset=""></p>+79196199874</p>
-                <img src="/images/gmail.svg" alt="gmail.com" srcset=""><p>98lillitlu13@gmail.com</p>
-                <img src="/images/vk.svg" alt="vk.com" srcset=""><p>https://vk.com/lillit_lu</p>
+                <a href="https://api.whatsapp.com/send?phone=79196199874"><img class="contacts__ico" src="/images/whatsapp.svg" alt="whatsapp" srcset=""></p>Связаться со мной в Whatsapp</p></a>
+                <a href="https://t.me/Lillit1337"><img class="contacts__ico" src="/images/telegram.svg" alt="telegram" srcset=""></p>@Lillit1337</p></a>
+                <a href="mailto:98lillitlu13@gmail.com"><img class="contacts__ico" src="/images/gmail.svg" alt="gmail.com" srcset=""><p>Связаться со мной по почте</p></a>
+                <a href="http://vk.com/lillit_lu"><img class="contacts__ico" src="/images/vk.svg" alt="vk.com" srcset=""><p>Моя страница Вконтакте</p></a>
                 </div>
             </div>
         </section>
@@ -114,8 +88,5 @@
         <p>Copyright ©2020</p>
     </footer>    
     </div>
-
-
-
 </body>
 </html>
