@@ -14,60 +14,55 @@ var maxCardId = 0;
 
 var fieldNames = ["occupation", "responsibilities", "startDate", "endDate"];
 
-var btnStartEditing = document.getElementById("btn-start-editing");
-var btnAddNewCard = document.getElementById("btn-add-new-card");
-var btnFinishEditing = document.getElementById("btn-finish-editing");
-    
 function switchButtons(isEditMode) {
     if (isEditMode) {
-        btnStartEditing.style.display = "none";
-        btnAddNewCard.style.display = "inline-block";
-        btnFinishEditing.style.display = "inline-block";
+        $("#btn-start-editing").hide();
+        $("#btn-add-new-card").show();
+        $("#btn-finish-editing").show();
     } else {
-        btnStartEditing.style.display = "inline-block";
-        btnAddNewCard.style.display = "none";
-        btnFinishEditing.style.display = "none";
+        $("#btn-start-editing").show();
+        $("#btn-add-new-card").hide();
+        $("#btn-finish-editing").hide();
     }
 }
 
-var myJob = document.getElementById("my-job");
-
 function startEditing() {
     isEditMode = true;
-    switchButtons(isEditMode)   
-    myJob.classList.add("my-job-edit"); 
+    switchButtons(isEditMode);
+    $("#my-job").addClass("my-job-edit");
 }
 
-function finishEditing() { 
+function finishEditing() {
     isEditMode = false;
     switchButtons(isEditMode);
-    myJob.classList.remove("my-job-edit");
+    $("#my-job").removeClass("my-job-edit");
     if (editCardId != null) {
-        // если было добавленое новой карты, удалить
+        // если было добавленое новой карты, удалим
         if (editCardId == -1) {
             cards = cards.filter((x) => x.id != -1);
         }
         editCardId = null;
-        renderJobCards(); //Обновление карточки
+        renderJobCards();
     }
     saveChangesToLocalStorage();
 }
 
 function addNewCard() {
-    // если какая-то карточка уже редактируется, запретить добавление новых карточек
+    // если какая-то карточка уже редактируется, запрещаем добавление
     if (editCardId != null) {
         return;
     }
+
     var newCard = {
         id: -1,
-    }
-    fieldNames.forEach((fieldName)=> (newCard[fieldName] = ""));
+    };
+    fieldNames.forEach((fieldName) => (newCard[fieldName] = ""));
     cards.push(newCard);
 
-        // -1 - id новой  карточки
+    // -1 означает что это новая карточка
     editCardId = -1;
 
-        
+    // обновить DOM
     renderJobCards();
 }
 
@@ -79,32 +74,32 @@ function editCard(cardId) {
 
 // удаление карточки с id=cardId
 function removeCard(cardId) {
-    // добавить изменение в массив
+    // добавляем изменение в массив
     changes.push({
         type: "remove",
         id: cardId,
     });
 
-    // применить изменение к текущему состоянию
+    // применяем изменение к текущему состоянию
     cards = cards.filter((x) => x.id != cardId);
-    
+
+    // обновить DOM
     renderJobCards();
 }
 
-// сохранить изменения в карточке с id = cardId
+// сохранить изменения в карточке с id=cardId
 function saveChanges(cardId) {
     // обновленный объект карточки
     var updatedCard = {
         id: cardId,
     };
-    var card = document.querySelector(`[data-card-id="${cardId}"]`);
     fieldNames.forEach((fieldName) => {
-        var field = card.querySelector(`[name="${fieldName}"]`);
-        updatedCard[fieldName] = field.value;
+        var value = $(`[data-card-id="${cardId}"] [name="${fieldName}"]`).val();
+        updatedCard[fieldName] = value;
     });
 
     if (cardId == -1) {
-        // новая карточка. Присвоить новый идентификатор
+        // это новая карточка. присвоить новый идентификатор
         maxCardId++;
         updatedCard.id = maxCardId;
     }
@@ -113,9 +108,9 @@ function saveChanges(cardId) {
     changes.push({
         type: cardId == -1 ? "add" : "edit",
         data: updatedCard,
-    });
+    });    
 
-    // подменить редактируемую карту новой версией
+    // подменяем редактируемую карту новой версией
     cards = cards.map((card) => {
         if (card.id != cardId) {
             return card;
@@ -126,7 +121,8 @@ function saveChanges(cardId) {
 
     // редактирование завершено
     editCardId = null;
-   
+
+    // обновить DOM
     renderJobCards();
 }
 
@@ -150,7 +146,7 @@ function renderJobCards() {
             res += renderJobCard(job);
         }
     });
-    document.getElementById("cards").innerHTML = res;
+    $("#cards").html(res);
 }
 
 function renderJobCard(card) {
@@ -194,9 +190,9 @@ function renderJobCardEdit(card) {
 }
 
 async function init() {
-    btnStartEditing.addEventListener("click", startEditing);
-    btnFinishEditing.addEventListener("click", finishEditing);
-    btnAddNewCard.addEventListener("click", addNewCard);
+    $("#btn-start-editing").click(startEditing);
+    $("#btn-finish-editing").click(finishEditing);
+    $("#btn-add-new-card").click(addNewCard);
 
     var response = await fetch("/data.json");
     var data = await response.json();
@@ -208,7 +204,7 @@ async function init() {
 // инициализировать
 function initMaxCardId(data) {
     let maxCardIdFromLocalStorage = localStorage.getItem("maxCardId");
-    // если в localStorage еще нет этого значения, инициализировать по данным
+    // если в localStorage еще нету этого значения, инициализируем по данным
     if (!maxCardIdFromLocalStorage) {
         let ids = data.map((x) => x.id);
         let maxCardIdFromData = Math.max.apply(null, ids);
@@ -230,16 +226,14 @@ function applyChangesFromLocalStorage(data) {
     changes.forEach((change) => {
         switch (change.type) {
             case "remove":
-                // удалить элемент с id = change.id
-                result = result.filter((x) => x.id != change.id);
+                // удаляем элемент с id=change.id
+                result = result.filter(x => x.id != change.id);
                 break;
             case "add":
                 result.push(change.data);
                 break;
             case "edit":
-                result = result.map((card) =>
-                    card.id == change.data.id ? change.data : card
-                );
+                result = result.map(card => card.id == change.data.id ? change.data : card);
                 break;
         }
     });
@@ -248,8 +242,8 @@ function applyChangesFromLocalStorage(data) {
 }
 
 function saveChangesToLocalStorage() {
-    localStorage.setItem("maxCardId", maxCardId);
-    localStorage.setItem("cardChanges", JSON.stringify(changes));
+    localStorage.setItem('maxCardId', maxCardId);
+    localStorage.setItem('cardChanges', JSON.stringify(changes));
 }
 
 init();
